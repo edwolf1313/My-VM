@@ -72,6 +72,18 @@
       var command = $(this).attr('name');
       $(".scriptModal").attr('name', command);
     });
+    $(document).on("click", ".open-runDialog", function() {
+      var command = $(this).attr('name');
+      $(".runModal").attr('name', command);
+    });
+    $(document).on("click", ".open-snapshotDialog", function() {
+      var command = $(this).attr('name');
+      $(".ssModal").attr('name', command);
+    });
+    $(document).on("click", ".open-revertDialog", function() {
+      var command = $(this).attr('name');
+      $(".rsModal").attr('name', command);
+    });
     //file ;
     $(document).on('change', '#file_script', function() {
       var property = $(this).prop('files')[0];
@@ -83,14 +95,17 @@
       }
     })
 
-    function ajax_function($command, $name, $file_name, $scriptload) {
+    function ajax_function($command, $name, $file_name, $scriptload,$runcommand,$runargs,$description) {
       $(".page-loader").show();
       $.ajax({
         'url': '/My-VM/services/command_functions.php',
         'method': 'POST',
         'data': {
           'function_get': $command,
-          'clone_name': $name,
+          'run_command': $runcommand,
+          'run_args': $runargs,
+          'name': $name,
+          'description' : $description,
           'file_name': $file_name,
           'script': $scriptload,
         },
@@ -112,15 +127,31 @@
     $('.command').on('click', function() {
       $command = $(this).attr("name");
       $scriptload = "nothing";
+      $description ="none";
       $file_name = "My-VMfile";
+      $runcommand = "none";
+      $runargs = "none";
       $name = "nn-VM";
       if ($command != "script") {
-        $name = $("#clone_name").val();
-        ajax_function($command, $name, "", "");
+        if($command == "run_program"){
+            $runcommand = $("#run_command").val();
+            $runargs = $("#arguments").val();
+        }
+        else if($command == "create_snapshot"){
+            $name = $("#name_snapshot").val();
+            $description = $("#description").val();
+        }
+        else if($command == "revert_snapshot"){
+            $name = $("#revert_name_snapshot").val();
+        }
+        else{
+            $name = $("#clone_name").val();
+        }
+        ajax_function($command, $name, "", "",$runcommand,$runargs,$description);
       } else if ($command == "script") {
         $property = $("#file_script")[0].files[0];
         getBase64($property).then(function(value) {
-          ajax_function($command, $name, $property.name, value);
+          ajax_function($command, $name, $property.name, value,"","","");
         });
       }
     });

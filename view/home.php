@@ -44,7 +44,7 @@
             <span class="caption">
               <span class="caption-content">
                 <h2>Suspend</h2>
-                <p class="mb-0">Suspend your VM remotely!</p>
+                <p class="mb-0">Suspend your VM remotely</p>
               </span>
             </span>
             <img class="img-features" src="<?php echo $assets_url; ?> /img/suspend.jpg" alt="">
@@ -55,7 +55,7 @@
             <span class="caption">
               <span class="caption-content">
                 <h2>Script</h2>
-                <p class="mb-0">Run Your Script to VM remotely, Upload Now!</p>
+                <p class="mb-0">Run Your Script to VM remotely, Upload Now</p>
               </span>
             </span>
             <img class="img-features" src="<?php echo $assets_url; ?>/img/script.jpg" alt="">
@@ -66,7 +66,7 @@
             <span class="caption">
               <span class="caption-content">
                 <h2>Full Clone</h2>
-                <p class="mb-0">Full Clone your VM remotely, Upload Now!</p>
+                <p class="mb-0">Full Clone your VM remotely, Upload Now</p>
               </span>
             </span>
             <img class="img-features" src="<?php echo $assets_url; ?>/img/clone.jpg" alt="">
@@ -77,10 +77,43 @@
             <span class="caption">
               <span class="caption-content">
                 <h2>Linked Clone</h2>
-                <p class="mb-0">Linked Clone your VM remotely, Upload Now!</p>
+                <p class="mb-0">Linked Clone your VM remotely, Upload Now</p>
               </span>
             </span>
             <img class="img-features" src="<?php echo $assets_url; ?>/img/linked_clone.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item open-runDialog"  name="run_program" id="RunProgram"  data-toggle="modal" data-target="#runModal">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Run Program</h2>
+                <p class="mb-0">Run program on your VM remotely </p>
+              </span>
+            </span>
+            <img class="img-features" src="<?php echo $assets_url; ?>/img/run.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item open-snapshotDialog"  name="create_snapshot" id="Snapshot"  data-toggle="modal" data-target="#snapshotModal">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Snapshot</h2>
+                <p class="mb-0">Create a snapshot on your current state</p>
+              </span>
+            </span>
+            <img class="img-features" src="<?php echo $assets_url; ?>/img/camera.jpg" alt="">
+          </a>
+        </div>
+        <div class="col-lg-6">
+          <a class="portfolio-item open-revertDialog"  name="revert_snapshot" id="Revert"  data-toggle="modal" data-target="#revertModal">
+            <span class="caption">
+              <span class="caption-content">
+                <h2>Revert Snapshot</h2>
+                <p class="mb-0">Back to the state before</p>
+              </span>
+            </span>
+            <img class="img-features" src="<?php echo $assets_url; ?>/img/revert.jpg" alt="">
           </a>
         </div>
         <!-- Clone Modal -->
@@ -119,6 +152,65 @@
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary command scriptModal" data-dismiss="modal">RUN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="runModal" tabindex="-1" role="dialog" aria-labelledby="runmodal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">RUN COMMAND</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <input class="form-control" id="run_command" type="text" name="run_command" placeholder="Fill the command ">
+                  <input class="form-control mt-2" id="arguments" type="text" name="arguments" placeholder="Fill the arguments">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary command runModal" data-dismiss="modal">RUN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="snapshotModal" tabindex="-1" role="dialog" aria-labelledby="snapshotmodal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">SNAPSHOT DATA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input class="form-control" id="name_snapshot" type="text" name="name_snapshot" placeholder="Name of the snapshot ">
+                <input class="form-control mt-2" id="description" type="text" name="description" placeholder="Description">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary command ssModal" data-dismiss="modal">RUN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="revertModal" tabindex="-1" role="dialog" aria-labelledby="snapshotmodal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">REVERT SNAPSHOT DATA</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input class="form-control" id="revert_name_snapshot" type="text" name="revert_name_snapshot" placeholder="Name of the snapshot ">
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary command rsModal" data-dismiss="modal">RUN</button>
               </div>
             </div>
           </div>
