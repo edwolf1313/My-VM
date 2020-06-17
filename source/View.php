@@ -9,7 +9,7 @@ class View
     {
         $root = str_replace("/", "\\", $_SERVER["DOCUMENT_ROOT"]);
         $path = realpath(__DIR__."/../assets");
-        $this-> assets_url = str_replace($root, "http://localhost", $path);
+        $this-> assets_url = str_replace($root, "http://125.164.32.154", $path);
         // echo realpath(__dir__)."<br>";
         // echo $path."<br>";
         // echo $root;
